@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dogpu Core
+Comment=Connect to the Dogpu P2P Network
+Comment[de]=Verbinde mit dem Dogpu peer-to-peer Netzwerk
+Comment[fr]=Dogpu, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Dogpu, eşten eşe kriptografik sanal para birimi
+Exec=dogpu-qt %u
+Terminal=false
+Type=Application
+Icon=dogpu128
+MimeType=x-scheme-handler/dogpu;
+Categories=Office;Finance;

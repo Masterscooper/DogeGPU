@@ -1,11 +1,12 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2020 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_CONSENSUS_CONSENSUS_H
-#define RAVEN_CONSENSUS_CONSENSUS_H
+#ifndef DOGPU_CONSENSUS_CONSENSUS_H
+#define DOGPU_CONSENSUS_CONSENSUS_H
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -52,4 +53,4 @@ enum {
     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),
 };
 
-#endif // RAVEN_CONSENSUS_CONSENSUS_H
+#endif // DOGPU_CONSENSUS_CONSENSUS_H

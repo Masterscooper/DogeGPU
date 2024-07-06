@@ -1,10 +1,11 @@
 // Copyright (c) 2012-2015 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_CHECKQUEUE_H
-#define RAVEN_CHECKQUEUE_H
+#ifndef DOGPU_CHECKQUEUE_H
+#define DOGPU_CHECKQUEUE_H
 
 #include "sync.h"
 
@@ -215,4 +216,4 @@ public:
     }
 };
 
-#endif // RAVEN_CHECKQUEUE_H
+#endif // DOGPU_CHECKQUEUE_H

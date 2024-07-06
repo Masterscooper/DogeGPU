@@ -6,13 +6,13 @@ import subprocess
 import json
 
 
-#Set this to your raven-cli program
-cli = "raven-cli"
+#Set this to your dogpu-cli program
+cli = "dogpu-cli"
 
 #mode = "-testnet"
 mode = ""
-rpc_port = 8766
-#Set this information in your raven.conf file (in datadir, not testnet3)
+rpc_port = 6068
+#Set this information in your dogpu.conf file (in datadir, not testnet3)
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'
 

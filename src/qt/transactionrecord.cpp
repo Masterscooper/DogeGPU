@@ -1,5 +1,6 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2020 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,7 +11,7 @@
 #include "base58.h"
 #include "consensus/consensus.h"
 #include "validation.h"
-#include "ravenunits.h"
+#include "dogpuunits.h"
 #include "timedata.h"
 #include "wallet/wallet.h"
 #include "core_io.h"
@@ -42,10 +43,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
     std::map<std::string, std::string> mapValue = wtx.mapValue;
 
     
-    /** RVN START */
+    /** DOGPUS START */
     if(isSwapTransaction(wallet, wtx, parts, nCredit, nDebit, nNet))
         return parts;
-    /** RVN END */
+    /** DOGPUS END */
     if (nNet > 0 || wtx.IsCoinBase())
     {
         //
@@ -56,10 +57,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             const CTxOut& txout = wtx.tx->vout[i];
             isminetype mine = wallet->IsMine(txout);
 
-            /** RVN START */
+            /** DOGPUS START */
             if (txout.scriptPubKey.IsAssetScript() || txout.scriptPubKey.IsNullAssetTxDataScript() || txout.scriptPubKey.IsNullGlobalRestrictionAssetTxDataScript())
                 continue;
-            /** RVN END */
+            /** DOGPUS END */
 
             if(mine)
             {
@@ -70,7 +71,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                 if (ExtractDestination(txout.scriptPubKey, address) && IsMine(*wallet, address))
                 {
-                    // Received by Raven Address
+                    // Received by Dogpu Address
                     sub.type = TransactionRecord::RecvWithAddress;
                     sub.address = EncodeDestination(address);
                 }
@@ -104,10 +105,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
         isminetype fAllToMe = ISMINE_SPENDABLE;
         for (const CTxOut& txout : wtx.tx->vout)
         {
-            /** RVN START */
+            /** DOGPUS START */
             if (txout.scriptPubKey.IsAssetScript() || txout.scriptPubKey.IsNullAssetTxDataScript() || txout.scriptPubKey.IsNullGlobalRestrictionAssetTxDataScript())
                 continue;
-            /** RVN END */
+            /** DOGPUS END */
 
             isminetype mine = wallet->IsMine(txout);
             if(mine & ISMINE_WATCH_ONLY) involvesWatchAddress = true;
@@ -134,10 +135,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             {
                 const CTxOut& txout = wtx.tx->vout[nOut];
 
-                /** RVN START */
+                /** DOGPUS START */
                 if (txout.scriptPubKey.IsAssetScript())
                     continue;
-                /** RVN END */
+                /** DOGPUS END */
 
                 TransactionRecord sub(hash, nTime);
                 sub.idx = nOut;
@@ -153,7 +154,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 CTxDestination address;
                 if (ExtractDestination(txout.scriptPubKey, address))
                 {
-                    // Sent to Raven Address
+                    // Sent to Dogpu Address
                     sub.type = TransactionRecord::SendToAddress;
                     sub.address = EncodeDestination(address);
                 }
@@ -183,7 +184,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             //
 
 
-            /** RVN START */
+            /** DOGPUS START */
             // We will only show mixed debit transactions that are nNet < 0 or if they are nNet == 0 and
             // they do not contain assets. This is so the list of transaction doesn't add 0 amount transactions to the
             // list.
@@ -203,12 +204,12 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 parts.append(TransactionRecord(hash, nTime, TransactionRecord::Other, "", nNet, 0));
                 parts.last().involvesWatchAddress = involvesWatchAddress;
             }
-            /** RVN END */
+            /** DOGPUS END */
         }
     }
 
 
-    /** RVN START */
+    /** DOGPUS START */
     if (AreAssetsDeployed()) {
         CAmount nFee;
         std::string strSentAccount;
@@ -305,7 +306,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             }
         }
     }
-    /** RVN END */
+    /** DOGPUS END */
 
     return parts;
 }
@@ -381,7 +382,7 @@ bool TransactionRecord::isSwapTransaction(const CWallet *wallet, const CWalletTx
                 {
                     if(wallet->IsMine(txout))
                     {
-                        //If we sent assets, we need to see if we were sent assets or RVN in return
+                        //If we sent assets, we need to see if we were sent assets or DOGPUS in return
                         if(txout.scriptPubKey.IsAssetScript())
                         {
                             if(fSentAssets) { //Check to skip asset change by name
@@ -396,7 +397,7 @@ bool TransactionRecord::isSwapTransaction(const CWallet *wallet, const CWalletTx
                             myReceievedOutput = txout;
                             break;
                         }
-                        else //We got RVN
+                        else //We got DOGPUS
                         {
                             if(fSentAssets) { //If we sent assets, this is ours. but we need to adjust for change.
                                 myReceievedOutput = txout;
@@ -420,20 +421,20 @@ bool TransactionRecord::isSwapTransaction(const CWallet *wallet, const CWalletTx
                 //Trade!
                 //Amount represents the asset we sent, no matter the perspective
                 sub.credit = recvAmount;
-                std::string asset_qty_format = RavenUnits::formatWithCustomName(QString::fromStdString(sentType), sentAmount, 2).toUtf8().constData();
+                std::string asset_qty_format = DogpuUnits::formatWithCustomName(QString::fromStdString(sentType), sentAmount, 2).toUtf8().constData();
                 sub.assetName = strprintf("%s (%s %s)", TransactionView::tr("Traded Away").toUtf8().constData(), recvType, asset_qty_format);
             } else if (fSentAssets) {
                 //Sell!
                 //Total price paid, need to use net calculation when we executed
                 sub.credit = mine ? myReceievedOutput.nValue : nNet;
-                std::string asset_qty_format = RavenUnits::formatWithCustomName(QString::fromStdString(sentType), sentAmount, 2).toUtf8().constData();
-                sub.assetName = strprintf("RVN (%s %s)", TransactionView::tr("Sold").toUtf8().constData(), asset_qty_format);
+                std::string asset_qty_format = DogpuUnits::formatWithCustomName(QString::fromStdString(sentType), sentAmount, 2).toUtf8().constData();
+                sub.assetName = strprintf("DOGPUS (%s %s)", TransactionView::tr("Sold").toUtf8().constData(), asset_qty_format);
             } else if (fRecvAssets) {
                 //Buy!
                 //Total price paid, need to use net calculation when we executed
                 sub.credit = (mine ? -myProvidedInput.nValue : nNet);
-                std::string asset_qty_format = RavenUnits::formatWithCustomName(QString::fromStdString(recvType), recvAmount, 2).toUtf8().constData();
-                sub.assetName = strprintf("RVN (%s %s)", TransactionView::tr("Bought").toUtf8().constData(), asset_qty_format);
+                std::string asset_qty_format = DogpuUnits::formatWithCustomName(QString::fromStdString(recvType), recvAmount, 2).toUtf8().constData();
+                sub.assetName = strprintf("DOGPUS (%s %s)", TransactionView::tr("Bought").toUtf8().constData(), asset_qty_format);
             } else {
                 LogPrintf("\tFell Through!\n");
                 return false; //!

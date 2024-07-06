@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/dogpu/.dogpu" ]; then
+	DOGPUD_DEFAULT_DATADIR="/var/lib/dogpu/.dogpu"
+else
+	DOGPUD_DEFAULT_DATADIR="/var/lib/dogpud"
+fi
+
+DOGPUD_CONFIGFILE=${DOGPUD_CONFIGFILE:-/etc/dogpu/dogpu.conf}
+DOGPUD_PIDDIR=${DOGPUD_PIDDIR:-/var/run/dogpud}
+DOGPUD_PIDFILE=${DOGPUD_PIDFILE:-${DOGPUD_PIDDIR}/dogpud.pid}
+DOGPUD_DATADIR=${DOGPUD_DATADIR:-${DOGPUD_DEFAULT_DATADIR}}
+DOGPUD_USER=${DOGPUD_USER:-${DOGPU_USER:-dogpu}}
+DOGPUD_GROUP=${DOGPUD_GROUP:-dogpu}
+DOGPUD_BIN=${DOGPUD_BIN:-/usr/bin/dogpud}
+DOGPUD_NICE=${DOGPUD_NICE:-${NICELEVEL:-0}}
+DOGPUD_OPTS="${DOGPUD_OPTS:-${DOGPU_OPTS}}"
+
+name="Dogpu Core Daemon"
+description="Dogpu cryptocurrency P2P network daemon"
+
+command="/usr/bin/dogpud"
+command_args="-pid=\"${DOGPUD_PIDFILE}\" \
+		-conf=\"${DOGPUD_CONFIGFILE}\" \
+		-datadir=\"${DOGPUD_DATADIR}\" \
+		-daemon \
+		${DOGPUD_OPTS}"
+
+required_files="${DOGPUD_CONFIGFILE}"
+start_stop_daemon_args="-u ${DOGPUD_USER} \
+			-N ${DOGPUD_NICE} -w 2000"
+pidfile="${DOGPUD_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${DOGPUD_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${DOGPUD_USER}:${DOGPUD_GROUP}" \
+	"${DOGPUD_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${DOGPUD_USER}:${DOGPUD_GROUP}" \
+	"${DOGPUD_PIDDIR}"
+
+	checkpath -f \
+	-o ${DOGPUD_USER}:${DOGPUD_GROUP} \
+	-m 0660 \
+	${DOGPUD_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${DOGPUD_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run dogpud."
+		eerror "The setting must appear in ${DOGPUD_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Dogpu Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

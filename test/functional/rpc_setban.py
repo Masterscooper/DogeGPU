@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # Copyright (c) 2015-2019 The Bitcoin Core developers
 # Copyright (c) 2017-2020 The Raven Core developers
+# Copyright (c) 2024 The Dogpu Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """Test the setban rpc call."""
 
 import time
-from test_framework.test_framework import RavenTestFramework
+from test_framework.test_framework import DogpuTestFramework
 from test_framework.util import connect_nodes, p2p_port, assert_equal
 
-class SetBanTests(RavenTestFramework):
+class SetBanTests(DogpuTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.setup_clean_chain = True

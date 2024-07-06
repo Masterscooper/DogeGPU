@@ -1,0 +1,6 @@
+usr/local/bin/dogpu-qt usr/bin
+share/pixmaps/dogpu32.xpm usr/share/pixmaps
+share/pixmaps/dogpu16.xpm usr/share/pixmaps
+share/pixmaps/dogpu128.png usr/share/pixmaps
+debian/dogpu-qt.desktop usr/share/applications
+debian/dogpu-qt.protocol usr/share/kde4/services/

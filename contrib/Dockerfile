@@ -1,10 +1,10 @@
 FROM amd64/ubuntu:20.04 AS base
 
-#If you found this docker image helpful please donate RVN to the maintainer
+#If you found this docker image helpful please donate DOGPUS to the maintainer
 LABEL maintainer="RV9zdNeUTQUToZUcRp9uNF8gwH5LzDFtan"
 
-EXPOSE 8766/tcp
-EXPOSE 8767/tcp
+EXPOSE 6068/tcp
+EXPOSE 6069/tcp
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -31,33 +31,33 @@ RUN apt-get update && \
 	apt-get clean
 
 #Copy source dir
-COPY . /home/raven/build/Ravencoin/
-WORKDIR /home/raven/build/Ravencoin
+COPY . /home/dogpu/build/Dogegpu/
+WORKDIR /home/dogpu/build/Dogegpu
 
 #build db4 from source
-WORKDIR /home/raven/build/Ravencoin/contrib
+WORKDIR /home/dogpu/build/Dogegpu/contrib
 RUN ./install_db4.sh ../../
 
-# build Ravencore
-WORKDIR /home/raven/build/Ravencoin
-RUN ./autogen.sh && ./configure --disable-tests BDB_LIBS="-L/home/raven/build/db4/lib -ldb_cxx-4.8" BDB_CFLAGS="-I/home/raven/build/db4/include" --with-gui=no  && make -j4
+# build Dogpucore
+WORKDIR /home/dogpu/build/Dogegpu
+RUN ./autogen.sh && ./configure --disable-tests BDB_LIBS="-L/home/dogpu/build/db4/lib -ldb_cxx-4.8" BDB_CFLAGS="-I/home/dogpu/build/db4/include" --with-gui=no  && make -j4
 
 FROM base AS final
 
 #Add our service account user
-RUN useradd -ms /bin/bash raven && \
-	mkdir /var/lib/raven && \
-	chown raven:raven /var/lib/raven && \
-	ln -s /var/lib/raven /home/raven/.raven && \
-	chown -h raven:raven /home/raven/.raven
+RUN useradd -ms /bin/bash dogpu && \
+	mkdir /var/lib/dogpu && \
+	chown dogpu:dogpu /var/lib/dogpu && \
+	ln -s /var/lib/dogpu /home/dogpu/.dogpu && \
+	chown -h dogpu:dogpu /home/dogpu/.dogpu
 
-VOLUME /var/lib/raven
+VOLUME /var/lib/dogpu
 
 #Copy the compiled binaries from the build
-COPY --from=build /home/raven/build/Ravencoin/src/ravend /usr/local/bin/ravend
-COPY --from=build /home/raven/build/Ravencoin/src/raven-cli /usr/local/bin/raven-cli
+COPY --from=build /home/dogpu/build/Dogegpu/src/dogpud /usr/local/bin/dogpud
+COPY --from=build /home/dogpu/build/Dogegpu/src/dogpu-cli /usr/local/bin/dogpu-cli
 
-WORKDIR /home/raven
-USER raven
+WORKDIR /home/dogpu
+USER dogpu
 
-CMD /usr/local/bin/ravend -datadir=/var/lib/raven -printtoconsole -onlynet=ipv4
+CMD /usr/local/bin/dogpud -datadir=/var/lib/dogpu -printtoconsole -onlynet=ipv4

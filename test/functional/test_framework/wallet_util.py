@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2018 The Bitcoin Core developers
 # Copyright (c) 2017-2020 The Raven Core developers
+# Copyright (c) 2024 The Dogpu Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -181,7 +182,7 @@ bip39_english = [
     "punch","pupil","puppy","purchase","purity","purpose","purse","push","put","puzzle",
     "pyramid","quality","quantum","quarter","question","quick","quit","quiz","quote","rabbit",
     "raccoon","race","rack","radar","radio","rail","rain","raise","rally","ramp",
-    "ranch","random","range","rapid","rare","rate","rather","raven","raw","razor",
+    "ranch","random","range","rapid","rare","rate","rather","dogpu","raw","razor",
     "ready","real","reason","rebel","rebuild","recall","receive","recipe","record","recycle",
     "reduce","reflect","reform","refuse","region","regret","regular","reject","relax","release",
     "relief","rely","remain","remember","remind","remove","render","renew","rent","reopen",
@@ -322,7 +323,7 @@ bip39_spanish = [
     "fin", "finca", "fingir", "finito", "firma", "flaco", "flauta", "flecha", "flor", "flota",
     "fluir", "flujo", "flúor", "fobia", "foca", "fogata", "fogón", "folio", "folleto", "fondo",
     "forma", "forro", "fortuna", "forzar", "fosa", "foto", "fracaso", "frágil", "franja", "frase",
-    "fraude", "freír", "freno", "fresa", "frío", "frito", "fruta", "fuego", "fuente", "fuerza",
+    "fraude", "freír", "dogpuo", "fresa", "frío", "frito", "fruta", "fuego", "fuente", "fuerza",
     "fuga", "fumar", "función", "funda", "furgón", "furia", "fusil", "fútbol", "futuro", "gacela",
     "gafas", "gaita", "gajo", "gala", "galería", "gallo", "gamba", "ganar", "gancho", "ganga",
     "ganso", "garaje", "garza", "gasolina", "gastar", "gato", "gavilán", "gemelo", "gemir", "gen",
@@ -454,7 +455,7 @@ bip39_spanish = [
     "zafiro", "zanja", "zapato", "zarza", "zona", "zorro", "zumo", "zurdo"
 ]
 
-bip39_french = [
+bip39_dogpuch = [
     "abaisser", "abandon", "abdiquer", "abeille", "abolir", "aborder", "aboutir", "aboyer", "abrasif", "abreuver",
     "abriter", "abroger", "abrupt", "absence", "absolu", "absurde", "abusif", "abyssal", "académie", "acajou",
     "acarien", "accabler", "accepter", "acclamer", "accolade", "accroche", "accuser", "acerbe", "achat", "acheter",
@@ -3407,7 +3408,7 @@ bip39_italian = [
     "fiscale", "fisico", "fiume", "flacone", "flamenco", "flebo", "flemma", "florido", "fluente", "fluoro",
     "fobico", "focaccia", "focoso", "foderato", "foglio", "folata", "folclore", "folgore", "fondente", "fonetico",
     "fonia", "fontana", "forbito", "forchetta", "foresta", "formica", "fornaio", "foro", "fortezza", "forzare",
-    "fosfato", "fosso", "fracasso", "frana", "frassino", "fratello", "freccetta", "frenata", "fresco", "frigo",
+    "fosfato", "fosso", "fracasso", "frana", "frassino", "fratello", "freccetta", "dogpuata", "fresco", "frigo",
     "frollino", "fronde", "frugale", "frutta", "fucilata", "fucsia", "fuggente", "fulmine", "fulvo", "fumante",
     "fumetto", "fumoso", "fune", "funzione", "fuoco", "furbo", "furgone", "furore", "fuso", "futile",
     "gabbiano", "gaffe", "galateo", "gallina", "galoppo", "gambero", "gamma", "garanzia", "garbo", "garofano",

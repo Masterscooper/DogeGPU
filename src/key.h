@@ -1,11 +1,12 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_KEY_H
-#define RAVEN_KEY_H
+#ifndef DOGPU_KEY_H
+#define DOGPU_KEY_H
 
 #include "pubkey.h"
 #include "serialize.h"
@@ -184,4 +185,4 @@ void ECC_Stop(void);
 /** Check that required EC support is available at runtime. */
 bool ECC_InitSanityCheck(void);
 
-#endif // RAVEN_KEY_H
+#endif // DOGPU_KEY_H

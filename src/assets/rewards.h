@@ -1,9 +1,10 @@
 // Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVENCOIN_REWARDS_H
-#define RAVENCOIN_REWARDS_H
+#ifndef DOGEGPU_REWARDS_H
+#define DOGEGPU_REWARDS_H
 
 #include "amount.h"
 #include "tinyformat.h"
@@ -167,4 +168,4 @@ void CheckRewardDistributions(CWallet * p_wallet);
 
 
 
-#endif //RAVENCOIN_REWARDS_H
+#endif //DOGEGPU_REWARDS_H

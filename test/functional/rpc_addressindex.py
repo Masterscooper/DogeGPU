@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2015 The Bitcoin Core developers
 # Copyright (c) 2017-2020 The Raven Core developers
+# Copyright (c) 2024 The Dogpu Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,12 +9,12 @@
 
 import binascii
 import time
-from test_framework.test_framework import RavenTestFramework
+from test_framework.test_framework import DogpuTestFramework
 from test_framework.util import connect_nodes_bi, assert_equal
 from test_framework.script import CScript, OP_HASH160, OP_EQUAL, OP_DUP, OP_EQUALVERIFY, OP_CHECKSIG
 from test_framework.mininode import CTransaction, CTxIn, CTxOut, COutPoint
 
-class AddressIndexTest(RavenTestFramework):
+class AddressIndexTest(DogpuTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

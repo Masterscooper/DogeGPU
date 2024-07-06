@@ -1,10 +1,11 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_WALLET_COINCONTROL_H
-#define RAVEN_WALLET_COINCONTROL_H
+#ifndef DOGPU_WALLET_COINCONTROL_H
+#define DOGPU_WALLET_COINCONTROL_H
 
 #include "policy/feerate.h"
 #include "policy/fees.h"
@@ -37,10 +38,10 @@ public:
     //! Fee estimation mode to control arguments to estimateSmartFee
     FeeEstimateMode m_fee_mode;
 
-    /** RVN START */
+    /** DOGPUS START */
     //! Name of the asset that is selected, used when sending assets with coincontrol
     std::string strAssetSelected;
-    /** RVN END */
+    /** DOGPUS END */
 
     CCoinControl()
     {
@@ -130,4 +131,4 @@ private:
     std::set<COutPoint> setAssetsSelected;
 };
 
-#endif // RAVEN_WALLET_COINCONTROL_H
+#endif // DOGPU_WALLET_COINCONTROL_H

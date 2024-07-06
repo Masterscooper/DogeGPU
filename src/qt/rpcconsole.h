@@ -1,10 +1,11 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2021 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_RPCCONSOLE_H
-#define RAVEN_QT_RPCCONSOLE_H
+#ifndef DOGPU_QT_RPCCONSOLE_H
+#define DOGPU_QT_RPCCONSOLE_H
 
 #include "guiutil.h"
 #include "peertablemodel.h"
@@ -29,7 +30,7 @@ class QMenu;
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local Raven RPC console. */
+/** Local Dogpu RPC console. */
 class RPCConsole: public QWidget
 {
     Q_OBJECT
@@ -171,4 +172,4 @@ private:
     void updateNetworkState();
 };
 
-#endif // RAVEN_QT_RPCCONSOLE_H
+#endif // DOGPU_QT_RPCCONSOLE_H

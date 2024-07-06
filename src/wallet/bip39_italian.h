@@ -719,7 +719,7 @@ const char * const wordlist_it[] = {
 "frassino",
 "fratello",
 "freccetta",
-"frenata",
+"dogpuata",
 "fresco",
 "frigo",
 "frollino",

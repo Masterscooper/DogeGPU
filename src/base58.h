@@ -1,6 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,8 +13,8 @@
  * - E-mail usually won't line-break if there's no punctuation to break at.
  * - Double-clicking selects the whole string as one word if it's all alphanumeric.
  */
-#ifndef RAVEN_BASE58_H
-#define RAVEN_BASE58_H
+#ifndef DOGPU_BASE58_H
+#define DOGPU_BASE58_H
 
 #include "chainparams.h"
 #include "key.h"
@@ -94,13 +95,13 @@ public:
     bool operator< (const CBase58Data& b58) const { return CompareTo(b58) <  0; }
     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
 };
-/** base58-encoded Raven addresses.
+/** base58-encoded Dogpu addresses.
  * Public-key-hash-addresses have version 0 (or 111 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 5 (or 196 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
-class CRavenAddress : public CBase58Data {
+class CDogpuAddress : public CBase58Data {
 public:
     bool Set(const CKeyID &id);
     bool Set(const CScriptID &id);
@@ -108,10 +109,10 @@ public:
     bool IsValid() const;
     bool IsValid(const CChainParams &params) const;
 
-    CRavenAddress() {}
-    CRavenAddress(const CTxDestination &dest) { Set(dest); }
-    CRavenAddress(const std::string& strAddress) { SetString(strAddress); }
-    CRavenAddress(const char* pszAddress) { SetString(pszAddress); }
+    CDogpuAddress() {}
+    CDogpuAddress(const CTxDestination &dest) { Set(dest); }
+    CDogpuAddress(const std::string& strAddress) { SetString(strAddress); }
+    CDogpuAddress(const char* pszAddress) { SetString(pszAddress); }
 
     CTxDestination Get() const;
     bool GetIndexKey(uint160& hashBytes, int& type) const;
@@ -120,7 +121,7 @@ public:
 /**
  * A base58-encoded secret key
  */
-class CRavenSecret : public CBase58Data
+class CDogpuSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -129,11 +130,11 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CRavenSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    CRavenSecret() {}
+    CDogpuSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CDogpuSecret() {}
 };
 
-template<typename K, int Size, CChainParams::Base58Type Type> class CRavenExtKeyBase : public CBase58Data
+template<typename K, int Size, CChainParams::Base58Type Type> class CDogpuExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K &key) {
@@ -151,23 +152,23 @@ public:
         return ret;
     }
 
-    CRavenExtKeyBase(const K &key) {
+    CDogpuExtKeyBase(const K &key) {
         SetKey(key);
     }
 
-    CRavenExtKeyBase(const std::string& strBase58c) {
+    CDogpuExtKeyBase(const std::string& strBase58c) {
         SetString(strBase58c.c_str(), GetParams().Base58Prefix(Type).size());
     }
 
-    CRavenExtKeyBase() {}
+    CDogpuExtKeyBase() {}
 };
 
-typedef CRavenExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CRavenExtKey;
-typedef CRavenExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CRavenExtPubKey;
+typedef CDogpuExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CDogpuExtKey;
+typedef CDogpuExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CDogpuExtPubKey;
 
 std::string EncodeDestination(const CTxDestination& dest);
 CTxDestination DecodeDestination(const std::string& str);
 bool IsValidDestinationString(const std::string& str);
 bool IsValidDestinationString(const std::string& str, const CChainParams& params);
 
-#endif // RAVEN_BASE58_H
+#endif // DOGPU_BASE58_H

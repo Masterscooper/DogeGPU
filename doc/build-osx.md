@@ -42,17 +42,17 @@ from the root of the repository.
 
 **Note**: You only need Berkeley DB if the wallet is enabled (see [*Disable-wallet mode*](/doc/build-osx.md#disable-wallet-mode)).
 
-## Build Raven Core
+## Build Dogpu Core
 
-1. Clone the Raven Core source code:
+1. Clone the Dogpu Core source code:
     ```shell
-    git clone https://github.com/RavenProject/Ravencoin
-    cd Ravencoin
+    git clone https://github.com/Masterscooper/Dogegpu
+    cd Dogegpu
     ```
 
-2.  Build raven-core:
+2.  Build dogpu-core:
 
-    Configure and build the headless raven binaries as well as the GUI (if Qt is found).
+    Configure and build the headless dogpu binaries as well as the GUI (if Qt is found).
 
     You can disable the GUI build by passing `--without-gui` to configure.
     ```shell
@@ -72,7 +72,7 @@ from the root of the repository.
     ```
 
 ## `disable-wallet` mode
-When the intention is to run only a P2P node without a wallet, Raven Core may be
+When the intention is to run only a P2P node without a wallet, Dogpu Core may be
 compiled in `disable-wallet` mode with:
 ```shell
 ./configure --disable-wallet
@@ -83,42 +83,42 @@ In this case there is no dependency on Berkeley DB 4.8 and SQLite.
 Mining is also possible in disable-wallet mode using the `getblocktemplate` RPC call.
 
 ## Running
-Raven Core is now available at `./src/ravend`
+Dogpu Core is now available at `./src/dogpud`
 
 Before running, you may create an empty configuration file:
 ```shell
-mkdir -p "/Users/${USER}/Library/Application Support/Raven"
+mkdir -p "/Users/${USER}/Library/Application Support/Dogpu"
 
-touch "/Users/${USER}/Library/Application Support/Raven/raven.conf"
+touch "/Users/${USER}/Library/Application Support/Dogpu/dogpu.conf"
 
-chmod 600 "/Users/${USER}/Library/Application Support/Raven/raven.conf"
+chmod 600 "/Users/${USER}/Library/Application Support/Dogpu/dogpu.conf"
 ```
 
-The first time you run ravend, it will start downloading the blockchain. This process could
+The first time you run dogpud, it will start downloading the blockchain. This process could
 take many hours, or even days on slower than average systems.
 
 You can monitor the download process by looking at the debug.log file:
 ```shell
-tail -f $HOME/Library/Application\ Support/Raven/debug.log
+tail -f $HOME/Library/Application\ Support/Dogpu/debug.log
 ```
 
 Other commands:
 -------
 
-    ./src/ravend -daemon # Starts the raven daemon.
-    ./src/raven-cli --help # Outputs a list of command-line options.
-    ./src/raven-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/dogpud -daemon # Starts the dogpu daemon.
+    ./src/dogpu-cli --help # Outputs a list of command-line options.
+    ./src/dogpu-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Using Qt Creator as IDE
 ------------------------
-You can use Qt Creator as an IDE, for raven development.
+You can use Qt Creator as an IDE, for dogpu development.
 Download and install the community edition of [Qt Creator](https://www.qt.io/download/).
 Uncheck everything except Qt Creator during the installation process.
 
 1. Make sure you installed everything through Homebrew mentioned above
 2. Do a proper ./configure --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "raven-qt" as project name, enter src/qt as location
+4. Enter "dogpu-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."

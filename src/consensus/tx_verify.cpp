@@ -1,5 +1,6 @@
 // Copyright (c) 2017-2017 The Bitcoin Core developers
 // Copyright (c) 2017-2021 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -196,8 +197,8 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
         if (!MoneyRange(nValueOut))
             return state.DoS(100, false, REJECT_INVALID, "bad-txns-txouttotal-toolarge");
 
-        /** RVN START */
-        // Find and handle all new OP_RVN_ASSET null data transactions
+        /** DOGPUS START */
+        // Find and handle all new OP_DOGPUS_ASSET null data transactions
         if (txout.scriptPubKey.IsNullAsset()) {
             CNullAssetTxData data;
             std::string address;
@@ -251,9 +252,9 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
                 fContainsNullAssetVerifierTx = true;
             }
         }
-        /** RVN END */
+        /** DOGPUS END */
 
-        /** RVN START */
+        /** DOGPUS START */
         bool isAsset = false;
         int nType;
         bool fIsOwner;
@@ -363,7 +364,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
         }
     }
 
-    /** RVN END */
+    /** DOGPUS END */
 
     if (fCheckDuplicateInputs) {
         std::set<COutPoint> vInOutPoints;
@@ -395,7 +396,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
                 return state.DoS(10, false, REJECT_INVALID, "bad-txns-prevout-null");
     }
 
-    /** RVN START */
+    /** DOGPUS START */
     if (tx.IsNewAsset()) {
         /** Verify the reissue assets data */
         std::string strError = "";
@@ -525,7 +526,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
     }
     else {
         // Fail if transaction contains any non-transfer asset scripts and hasn't conformed to one of the
-        // above transaction types.  Also fail if it contains OP_RVN_ASSET opcode but wasn't a valid script.
+        // above transaction types.  Also fail if it contains OP_DOGPUS_ASSET opcode but wasn't a valid script.
         for (auto out : tx.vout) {
             int nType;
             bool _isOwner;
@@ -534,10 +535,10 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
                     return state.DoS(100, false, REJECT_INVALID, "bad-txns-bad-asset-transaction");
                 }
             } else {
-                if (out.scriptPubKey.Find(OP_RVN_ASSET)) {
-                    if (out.scriptPubKey[0] != OP_RVN_ASSET) {
+                if (out.scriptPubKey.Find(OP_DOGPUS_ASSET)) {
+                    if (out.scriptPubKey[0] != OP_DOGPUS_ASSET) {
                         return state.DoS(100, false, REJECT_INVALID,
-                                         "bad-txns-op-rvn-asset-not-in-right-script-location");
+                                         "bad-txns-op-dogpus-asset-not-in-right-script-location");
                     }
                 }
             }
@@ -554,7 +555,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
     }
 
     // we allow restricted asset reissuance without having a verifier string transaction, we don't force it to be update
-    /** RVN END */
+    /** DOGPUS END */
 
     return true;
 }
@@ -834,11 +835,11 @@ bool Consensus::CheckTxAssets(const CTransaction& tx, CValidationState& state, c
                         return state.DoS(100, false, REJECT_INVALID, "bad-txns-bad-asset-transaction", false, "", tx.GetHash());
                     }
                 } else {
-                    if (out.scriptPubKey.Find(OP_RVN_ASSET)) {
+                    if (out.scriptPubKey.Find(OP_DOGPUS_ASSET)) {
                         if (AreRestrictedAssetsDeployed()) {
-                            if (out.scriptPubKey[0] != OP_RVN_ASSET) {
+                            if (out.scriptPubKey[0] != OP_DOGPUS_ASSET) {
                                 return state.DoS(100, false, REJECT_INVALID,
-                                                 "bad-txns-op-rvn-asset-not-in-right-script-location", false, "", tx.GetHash());
+                                                 "bad-txns-op-dogpus-asset-not-in-right-script-location", false, "", tx.GetHash());
                             }
                         } else {
                             return state.DoS(100, false, REJECT_INVALID, "bad-txns-bad-asset-script", false, "", tx.GetHash());

@@ -1,10 +1,11 @@
 // Copyright (c) 2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_MODALOVERLAY_H
-#define RAVEN_QT_MODALOVERLAY_H
+#ifndef DOGPU_QT_MODALOVERLAY_H
+#define DOGPU_QT_MODALOVERLAY_H
 
 #include <QDateTime>
 #include <QWidget>
@@ -48,4 +49,4 @@ private:
     bool userClosed;
 };
 
-#endif // RAVEN_QT_MODALOVERLAY_H
+#endif // DOGPU_QT_MODALOVERLAY_H

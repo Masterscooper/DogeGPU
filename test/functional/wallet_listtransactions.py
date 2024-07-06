@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
 # Copyright (c) 2017-2020 The Raven Core developers
+# Copyright (c) 2024 The Dogpu Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,7 +9,7 @@
 
 from io import BytesIO
 from decimal import Decimal
-from test_framework.test_framework import RavenTestFramework
+from test_framework.test_framework import DogpuTestFramework
 from test_framework.util import hex_str_to_bytes, assert_array_result, sync_mempools, assert_equal, bytes_to_hex_str
 from test_framework.mininode import CTransaction, COIN
 
@@ -20,7 +21,7 @@ def from_hex(hexstring):
     return tx
 
 
-class ListTransactionsTest(RavenTestFramework):
+class ListTransactionsTest(DogpuTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.enable_mocktime()

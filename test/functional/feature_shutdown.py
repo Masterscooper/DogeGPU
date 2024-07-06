@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 # Copyright (c) 2018 The Bitcoin Core developers
 # Copyright (c) 2017-2020 The Raven Core developers
+# Copyright (c) 2024 The Dogpu Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-"""Test ravend shutdown."""
+"""Test dogpud shutdown."""
 
 from threading import Thread
-from test_framework.test_framework import RavenTestFramework
+from test_framework.test_framework import DogpuTestFramework
 from test_framework.util import assert_equal, get_rpc_proxy, wait_until
 
 def test_long_call(node):
     block = node.waitfornewblock(5000)
     assert_equal(block['height'], 0)
 
-class ShutdownTest(RavenTestFramework):
+class ShutdownTest(DogpuTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

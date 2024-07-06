@@ -1,0 +1,8 @@
+/usr/bin/dogpu-cli		--	gen_context(system_u:object_r:dogpu_exec_t,s0)
+/usr/sbin/dogpud		--	gen_context(system_u:object_r:dogpu_exec_t,s0)
+/usr/lib(64)?/dogpu/dogpud		--	gen_context(system_u:object_r:dogpu_exec_t,s0)
+
+/etc/dogpu(/.*)?		gen_context(system_u:object_r:dogpu_conf_t,s0)
+/var/lib/dogpu(/.*)?		gen_context(system_u:object_r:dogpu_var_lib_t,s0)
+
+(/var)?/run/dogpud(/.*)?   gen_context(system_u:object_r:dogpu_var_run_t,s0)

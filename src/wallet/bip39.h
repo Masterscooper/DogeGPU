@@ -35,7 +35,7 @@ const int NOT_LANG_DEFINED = -1;
 
 const char *const ENGLISH = "english";
 const char *const SPANISH = "spanish";
-const char *const FRENCH = "french";
+const char *const DOGPUCH = "dogpuch";
 const char *const JAPANESE = "japanese";
 const char *const CHINESE_SIMPLIFIED = "chinese_simplified";
 const char *const CHINESE_TRADITIONAL = "chinese_traditional";

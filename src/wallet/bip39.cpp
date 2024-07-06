@@ -29,7 +29,7 @@
 #include "wallet/bip39_chinese_simplified.h"
 #include "wallet/bip39_chinese_traditional.h"
 #include "wallet/bip39_english.h"
-#include "wallet/bip39_french.h"
+#include "wallet/bip39_dogpuch.h"
 #include "wallet/bip39_italian.h"
 #include "wallet/bip39_japanese.h"
 #include "wallet/bip39_korean.h"
@@ -164,7 +164,7 @@ std::array<LanguageDetails, NUM_LANGUAGES_BIP39_SUPPORTED> CMnemonic::GetLanguag
     return {{
         {"English", ENGLISH, 12, wordlist_en},
         {"Spanish", SPANISH, 3, wordlist_es},
-        {"French", FRENCH, 12, wordlist_fr},
+        {"Dogpuch", DOGPUCH, 12, wordlist_fr},
         {"Japanese", JAPANESE, 3, wordlist_ja},
         {"Chinese Simplified", CHINESE_SIMPLIFIED, 12, wordlist_zh_s},
         {"Chinese Traditional", CHINESE_TRADITIONAL, 12, wordlist_zh_t},

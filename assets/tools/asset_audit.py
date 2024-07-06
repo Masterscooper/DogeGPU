@@ -20,18 +20,18 @@ import json
 import logging
 
 
-#Set this to your raven-cli program
-cli = "raven-cli"
+#Set this to your dogpu-cli program
+cli = "dogpu-cli"
 
 mode = "-main"
-rpc_port = 8766
+rpc_port = 6068
 
 #mode = "-testnet"
-#rpc_port = 18770
+#rpc_port = 16068
 #mode =  "-regtest"
 #rpc_port = 18444
 
-#Set this information in your raven.conf file (in datadir, not testnet6)
+#Set this information in your dogpu.conf file (in datadir, not testnet6)
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'
 
@@ -156,7 +156,7 @@ def audit(filter):
             print("Audit FAILED for " + asset)
             msg = "Audit FAILED for " + asset + " Issued="+str(total_issued)+ " Total="+str(total_for_asset)
             log_failure(msg)
-            send_notification(notification_emails, "Ravencoin Asset Audit Failed", msg)
+            send_notification(notification_emails, "Dogegpu Asset Audit Failed", msg)
             #exit(-1)
 
         if len(assets) == count:
@@ -164,7 +164,7 @@ def audit(filter):
             print("Stats:")
             print("  Max Distribed Asset: " + max_dist_asset_name + " with " + str(max_dist_address_count) + " addresses.")
             if (send_alerts_on_success and audits_failed == 0):
-              send_notification(notification_emails, "Ravencoin Asset Audit Success", "All " + str(len(assets)) + " assets audited.")
+              send_notification(notification_emails, "Dogegpu Asset Audit Success", "All " + str(len(assets)) + " assets audited.")
 
 if mode == "-regtest":  #If regtest then mine our own blocks
     import os

@@ -1,0 +1,81 @@
+policy_module(dogpu, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type dogpu_t;
+type dogpu_exec_t;
+init_daemon_domain(dogpu_t, dogpu_exec_t)
+
+permissive dogpu_t;
+
+type dogpu_initrc_exec_t;
+init_script_file(dogpu_initrc_exec_t)
+
+type dogpu_conf_t;
+files_type(dogpu_conf_t)
+
+type dogpu_var_lib_t;
+files_type(dogpu_var_lib_t)
+
+type dogpu_var_run_t;
+files_type(dogpu_var_run_t)
+
+type dogpu_port_t;
+corenet_port(dogpu_port_t)
+
+########################################
+#
+# dogpu local policy
+#
+allow dogpu_t self:process { fork };
+
+allow dogpu_t self:fifo_file rw_fifo_file_perms;
+allow dogpu_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(dogpu_t, dogpu_conf_t, dogpu_conf_t)
+manage_files_pattern(dogpu_t, dogpu_conf_t, dogpu_conf_t)
+
+manage_dirs_pattern(dogpu_t, dogpu_var_lib_t, dogpu_var_lib_t)
+manage_files_pattern(dogpu_t, dogpu_var_lib_t, dogpu_var_lib_t)
+files_var_lib_filetrans(dogpu_t, dogpu_var_lib_t, { dir file })
+
+manage_dirs_pattern(dogpu_t, dogpu_var_run_t, dogpu_var_run_t)
+manage_files_pattern(dogpu_t, dogpu_var_run_t, dogpu_var_run_t)
+
+sysnet_dns_name_resolve(dogpu_t)
+corenet_all_recvfrom_unlabeled(dogpu_t)
+
+allow dogpu_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(dogpu_t)
+corenet_tcp_sendrecv_generic_node(dogpu_t)
+corenet_tcp_sendrecv_all_ports(dogpu_t)
+corenet_tcp_bind_generic_node(dogpu_t)
+
+gen_require(`
+    type dogpu_port_t;
+')
+allow dogpu_t dogpu_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type dogpu_port_t;
+')
+allow dogpu_t dogpu_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(dogpu_t)
+
+files_read_etc_files(dogpu_t)
+
+miscfiles_read_localization(dogpu_t)
+
+sysnet_dns_name_resolve(dogpu_t)
+
+allow dogpu_t dogpu_exec_t:file execute_no_trans;
+allow dogpu_t self:process setsched;
+corecmd_exec_ls(dogpu_t)
+corenet_tcp_connect_http_port(dogpu_t)
+dev_read_urand(dogpu_t)
+fs_getattr_xattr_fs(dogpu_t)
+kernel_read_system_state(dogpu_t)

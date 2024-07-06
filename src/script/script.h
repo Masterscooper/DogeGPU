@@ -1,11 +1,12 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2021 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_SCRIPT_SCRIPT_H
-#define RAVEN_SCRIPT_SCRIPT_H
+#ifndef DOGPU_SCRIPT_SCRIPT_H
+#define DOGPU_SCRIPT_SCRIPT_H
 
 #include "crypto/common.h"
 #include "prevector.h"
@@ -184,9 +185,9 @@ enum opcodetype
     OP_NOP9 = 0xb8,
     OP_NOP10 = 0xb9,
 
-    /** RVN START */
-    OP_RVN_ASSET = 0xc0,
-    /** RVN END */
+    /** DOGPUS START */
+    OP_DOGPUS_ASSET = 0xc0,
+    /** DOGPUS END */
 
 
     // template matching params
@@ -575,9 +576,9 @@ public:
             pc += nSize;
         }
 
-        // If we see an op rvn asset, we consider all data after it has data, and not op codes
+        // If we see an op dogpus asset, we consider all data after it has data, and not op codes
         // Move the pc to the end of the script
-        if (opcode == OP_RVN_ASSET) {
+        if (opcode == OP_DOGPUS_ASSET) {
             unsigned int nSize = end() - pc;
             if (pvchRet)
                 pvchRet->assign(pc, pc + nSize);
@@ -642,7 +643,7 @@ public:
     }
 
     /**
-     * Pre-version-0.6, Raven always counted CHECKMULTISIGs
+     * Pre-version-0.6, Dogpu always counted CHECKMULTISIGs
      * as 20 sigops. With pay-to-script-hash, that changed:
      * CHECKMULTISIGs serialized in scriptSigs are
      * counted more accurately, assuming they are of the form
@@ -662,7 +663,7 @@ public:
     bool IsPayToWitnessScriptHash() const;
     bool IsWitnessProgram(int& version, std::vector<unsigned char>& program) const;
 
-    /** RVN START */
+    /** DOGPUS START */
     enum class txnouttype;
     bool IsAssetScript(int& nType, bool& fIsOwner, int& nStartingIndex) const;
     bool IsAssetScript(int& nType, bool& fIsOwner) const;
@@ -676,7 +677,7 @@ public:
     bool IsNullAssetTxDataScript() const;
     bool IsNullAssetVerifierTxDataScript() const;
     bool IsNullGlobalRestrictionAssetTxDataScript() const;
-    /** RVN END */
+    /** DOGPUS END */
 
     /** Used for obsolete pay-to-pubkey addresses indexing. */
     bool IsPayToPublicKey() const;
@@ -739,4 +740,4 @@ bool ScriptNewAsset(const CScript& scriptPubKey, int& nStartingIndex);
 bool ScriptTransferAsset(const CScript& scriptPubKey, int& nStartingIndex);
 bool ScriptReissueAsset(const CScript& scriptPubKey, int& nStartingIndex);
 
-#endif // RAVEN_SCRIPT_SCRIPT_H
+#endif // DOGPU_SCRIPT_SCRIPT_H

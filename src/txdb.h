@@ -1,11 +1,12 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2021 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_TXDB_H
-#define RAVEN_TXDB_H
+#ifndef DOGPU_TXDB_H
+#define DOGPU_TXDB_H
 
 #include "coins.h"
 #include "dbwrapper.h"
@@ -149,4 +150,4 @@ public:
     bool LoadBlockIndexGuts(const Consensus::Params& consensusParams, std::function<CBlockIndex*(const uint256&)> insertBlockIndex);
 };
 
-#endif // RAVEN_TXDB_H
+#endif // DOGPU_TXDB_H

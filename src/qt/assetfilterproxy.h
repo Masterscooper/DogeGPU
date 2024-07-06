@@ -1,9 +1,10 @@
 // Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVENCOIN_ASSETFILTERPROXY_H
-#define RAVENCOIN_ASSETFILTERPROXY_H
+#ifndef DOGEGPU_ASSETFILTERPROXY_H
+#define DOGEGPU_ASSETFILTERPROXY_H
 
 #include <QSortFilterProxyModel>
 
@@ -26,4 +27,4 @@ private:
 };
 
 
-#endif //RAVENCOIN_ASSETFILTERPROXY_H
+#endif //DOGEGPU_ASSETFILTERPROXY_H

@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2015 The Bitcoin Core developers
 # Copyright (c) 2017-2020 The Raven Core developers
+# Copyright (c) 2024 The Dogpu Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """Test transferring assets rpc calls"""
 
-from test_framework.test_framework import RavenTestFramework
+from test_framework.test_framework import DogpuTestFramework
 from test_framework.util import connect_all_nodes_bi, assert_equal, assert_raises_rpc_error
 
-class AssetTransferTest(RavenTestFramework):
+class AssetTransferTest(DogpuTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True
@@ -54,10 +55,10 @@ class AssetTransferTest(RavenTestFramework):
 
         n1_address = n1.getnewaddress()
 
-        n0_rvn_change = n0.getnewaddress()
+        n0_dogpus_change = n0.getnewaddress()
         n0_asset_change = n0.getnewaddress()
 
-        n0.transfer(asset_name="TRANSFER_TEST", qty=200, to_address=n1_address, message='', expire_time=0, change_address=n0_rvn_change, asset_change_address=n0_asset_change)
+        n0.transfer(asset_name="TRANSFER_TEST", qty=200, to_address=n1_address, message='', expire_time=0, change_address=n0_dogpus_change, asset_change_address=n0_asset_change)
 
         n0.generate(1)
         self.sync_all()
@@ -71,10 +72,10 @@ class AssetTransferTest(RavenTestFramework):
         n1_already_received_address = n1_address
 
         n1_address = n1.getnewaddress()
-        n0_rvn_change = n0.getnewaddress()
+        n0_dogpus_change = n0.getnewaddress()
         n0_asset_change = n0.getnewaddress()
 
-        n0.transferfromaddress(asset_name="TRANSFER_TEST", from_address=n0_from_address, qty=200, to_address=n1_address, message='', expire_time=0, rvn_change_address=n0_rvn_change, asset_change_address=n0_asset_change)
+        n0.transferfromaddress(asset_name="TRANSFER_TEST", from_address=n0_from_address, qty=200, to_address=n1_address, message='', expire_time=0, dogpus_change_address=n0_dogpus_change, asset_change_address=n0_asset_change)
 
         n0.generate(1)
         self.sync_all()
@@ -87,7 +88,7 @@ class AssetTransferTest(RavenTestFramework):
 
         # transfer some assets into another address node0 controls
         n0_new_address = n0.getnewaddress()
-        n0.transfer(asset_name="TRANSFER_TEST", qty=200, to_address=n0_new_address, message='', expire_time=0, change_address=n0_rvn_change, asset_change_address=n0_asset_change)
+        n0.transfer(asset_name="TRANSFER_TEST", qty=200, to_address=n0_new_address, message='', expire_time=0, change_address=n0_dogpus_change, asset_change_address=n0_asset_change)
 
         n0.generate(1)
         self.sync_all()
@@ -97,10 +98,10 @@ class AssetTransferTest(RavenTestFramework):
         n1_already_received_address_2 = n1_address
 
         n1_address = n1.getnewaddress()
-        n0_rvn_change = n0.getnewaddress()
+        n0_dogpus_change = n0.getnewaddress()
         n0_asset_change = n0.getnewaddress()
 
-        n0.transferfromaddresses(asset_name="TRANSFER_TEST", from_addresses=n0_from_addresses, qty=450, to_address=n1_address, message='', expire_time=0, rvn_change_address=n0_rvn_change, asset_change_address=n0_asset_change)
+        n0.transferfromaddresses(asset_name="TRANSFER_TEST", from_addresses=n0_from_addresses, qty=450, to_address=n1_address, message='', expire_time=0, dogpus_change_address=n0_dogpus_change, asset_change_address=n0_asset_change)
 
         n0.generate(1)
         self.sync_all()
@@ -115,7 +116,7 @@ class AssetTransferTest(RavenTestFramework):
         # Add the address the only contain 150 TRANSFER_TEST assets
         n0_from_addresses = [n0_asset_change]
 
-        assert_raises_rpc_error(-25, "Insufficient asset funds", n0.transferfromaddresses, "TRANSFER_TEST", n0_from_addresses, 450, n1_address, '', 0, n0_rvn_change, n0_asset_change)
+        assert_raises_rpc_error(-25, "Insufficient asset funds", n0.transferfromaddresses, "TRANSFER_TEST", n0_from_addresses, 450, n1_address, '', 0, n0_dogpus_change, n0_asset_change)
 
         # Verify that the failed transaction doesn't change the already mined address values on the wallet
         assert_equal(n0.listassetbalancesbyaddress(n1_already_received_address)["TRANSFER_TEST"], 200)

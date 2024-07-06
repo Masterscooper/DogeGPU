@@ -1,11 +1,12 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2024 The Dogpu Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_VALIDATIONINTERFACE_H
-#define RAVEN_VALIDATIONINTERFACE_H
+#ifndef DOGPU_VALIDATIONINTERFACE_H
+#define DOGPU_VALIDATIONINTERFACE_H
 
 #include <memory>
 
@@ -111,4 +112,4 @@ public:
 
 CMainSignals& GetMainSignals();
 
-#endif // RAVEN_VALIDATIONINTERFACE_H
+#endif // DOGPU_VALIDATIONINTERFACE_H

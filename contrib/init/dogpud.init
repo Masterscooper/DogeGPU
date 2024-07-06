@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  dogpud The dogpu core server.
+#
+#
+# chkconfig: 345 80 20
+# description: dogpud
+# processname: dogpud
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/dogpud, see below
+if [ -f /etc/sysconfig/dogpud ]; then
+        . /etc/sysconfig/dogpud
+fi
+
+RETVAL=0
+
+prog=dogpud
+# you can override the lockfile via DOGPUD_LOCKFILE in /etc/sysconfig/dogpud
+lockfile=${DOGPUD_LOCKFILE-/var/lock/subsys/dogpud}
+
+# dogpud defaults to /usr/bin/dogpud, override with DOGPUD_BIN
+dogpud=${DOGPUD_BIN-/usr/bin/dogpud}
+
+# dogpud opts default to -disablewallet, override with DOGPUD_OPTS
+dogpud_opts=${DOGPUD_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $dogpud $dogpud_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

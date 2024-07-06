@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: ravend.service
-Upstart: ravend.conf
-OpenRC:  ravend.openrc
-         ravend.openrcconf
-CentOS:  ravend.init
-OS X:    org.raven.ravend.plist
+SystemD: dogpud.service
+Upstart: dogpud.conf
+OpenRC:  dogpud.openrc
+         dogpud.openrcconf
+CentOS:  dogpud.init
+OS X:    org.dogpu.dogpud.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

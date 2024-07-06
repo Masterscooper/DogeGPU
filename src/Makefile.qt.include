@@ -1,98 +1,99 @@
 # Copyright (c) 2013-2016 The Bitcoin Core developers
 # Copyright (c) 2017-2019 The Raven Core developers
+# Copyright (c) 2024 The Dogpu Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += qt/raven-qt
-EXTRA_LIBRARIES += qt/libravenqt.a
+bin_PROGRAMS += qt/dogpu-qt
+EXTRA_LIBRARIES += qt/libdogpuqt.a
 
-# raven qt core #
+# dogpu qt core #
 QT_TS = \
-  qt/locale/raven_af.ts \
-  qt/locale/raven_af_ZA.ts \
-  qt/locale/raven_ar.ts \
-  qt/locale/raven_be_BY.ts \
-  qt/locale/raven_bg_BG.ts \
-  qt/locale/raven_bg.ts \
-  qt/locale/raven_ca_ES.ts \
-  qt/locale/raven_ca.ts \
-  qt/locale/raven_ca@valencia.ts \
-  qt/locale/raven_cs.ts \
-  qt/locale/raven_cy.ts \
-  qt/locale/raven_da.ts \
-  qt/locale/raven_de.ts \
-  qt/locale/raven_el_GR.ts \
-  qt/locale/raven_el.ts \
-  qt/locale/raven_en_GB.ts \
-  qt/locale/raven_en.ts \
-  qt/locale/raven_eo.ts \
-  qt/locale/raven_es_AR.ts \
-  qt/locale/raven_es_CL.ts \
-  qt/locale/raven_es_CO.ts \
-  qt/locale/raven_es_DO.ts \
-  qt/locale/raven_es_ES.ts \
-  qt/locale/raven_es_MX.ts \
-  qt/locale/raven_es.ts \
-  qt/locale/raven_es_UY.ts \
-  qt/locale/raven_es_VE.ts \
-  qt/locale/raven_et_EE.ts \
-  qt/locale/raven_et.ts \
-  qt/locale/raven_eu_ES.ts \
-  qt/locale/raven_fa_IR.ts \
-  qt/locale/raven_fa.ts \
-  qt/locale/raven_fi.ts \
-  qt/locale/raven_fr_CA.ts \
-  qt/locale/raven_fr_FR.ts \
-  qt/locale/raven_fr.ts \
-  qt/locale/raven_gl.ts \
-  qt/locale/raven_he.ts \
-  qt/locale/raven_hi_IN.ts \
-  qt/locale/raven_hr.ts \
-  qt/locale/raven_hu.ts \
-  qt/locale/raven_id_ID.ts \
-  qt/locale/raven_it_IT.ts \
-  qt/locale/raven_it.ts \
-  qt/locale/raven_ja.ts \
-  qt/locale/raven_ka.ts \
-  qt/locale/raven_kk_KZ.ts \
-  qt/locale/raven_ko_KR.ts \
-  qt/locale/raven_ku_IQ.ts \
-  qt/locale/raven_ky.ts \
-  qt/locale/raven_la.ts \
-  qt/locale/raven_lt.ts \
-  qt/locale/raven_lv_LV.ts \
-  qt/locale/raven_mk_MK.ts \
-  qt/locale/raven_mn.ts \
-  qt/locale/raven_ms_MY.ts \
-  qt/locale/raven_nb.ts \
-  qt/locale/raven_ne.ts \
-  qt/locale/raven_nl.ts \
-  qt/locale/raven_pl.ts \
-  qt/locale/raven_pt_BR.ts \
-  qt/locale/raven_pt_PT.ts \
-  qt/locale/raven_ro_RO.ts \
-  qt/locale/raven_ro.ts \
-  qt/locale/raven_ru_RU.ts \
-  qt/locale/raven_ru.ts \
-  qt/locale/raven_sk.ts \
-  qt/locale/raven_sl_SI.ts \
-  qt/locale/raven_sq.ts \
-  qt/locale/raven_sr@latin.ts \
-  qt/locale/raven_sr.ts \
-  qt/locale/raven_sv.ts \
-  qt/locale/raven_ta.ts \
-  qt/locale/raven_th_TH.ts \
-  qt/locale/raven_tr_TR.ts \
-  qt/locale/raven_tr.ts \
-  qt/locale/raven_uk.ts \
-  qt/locale/raven_ur_PK.ts \
-  qt/locale/raven_uz@Cyrl.ts \
-  qt/locale/raven_vi.ts \
-  qt/locale/raven_vi_VN.ts \
-  qt/locale/raven_zh_CN.ts \
-  qt/locale/raven_zh_HK.ts \
-  qt/locale/raven_zh.ts \
-  qt/locale/raven_zh_TW.ts
+  qt/locale/dogpu_af.ts \
+  qt/locale/dogpu_af_ZA.ts \
+  qt/locale/dogpu_ar.ts \
+  qt/locale/dogpu_be_BY.ts \
+  qt/locale/dogpu_bg_BG.ts \
+  qt/locale/dogpu_bg.ts \
+  qt/locale/dogpu_ca_ES.ts \
+  qt/locale/dogpu_ca.ts \
+  qt/locale/dogpu_ca@valencia.ts \
+  qt/locale/dogpu_cs.ts \
+  qt/locale/dogpu_cy.ts \
+  qt/locale/dogpu_da.ts \
+  qt/locale/dogpu_de.ts \
+  qt/locale/dogpu_el_GR.ts \
+  qt/locale/dogpu_el.ts \
+  qt/locale/dogpu_en_GB.ts \
+  qt/locale/dogpu_en.ts \
+  qt/locale/dogpu_eo.ts \
+  qt/locale/dogpu_es_AR.ts \
+  qt/locale/dogpu_es_CL.ts \
+  qt/locale/dogpu_es_CO.ts \
+  qt/locale/dogpu_es_DO.ts \
+  qt/locale/dogpu_es_ES.ts \
+  qt/locale/dogpu_es_MX.ts \
+  qt/locale/dogpu_es.ts \
+  qt/locale/dogpu_es_UY.ts \
+  qt/locale/dogpu_es_VE.ts \
+  qt/locale/dogpu_et_EE.ts \
+  qt/locale/dogpu_et.ts \
+  qt/locale/dogpu_eu_ES.ts \
+  qt/locale/dogpu_fa_IR.ts \
+  qt/locale/dogpu_fa.ts \
+  qt/locale/dogpu_fi.ts \
+  qt/locale/dogpu_fr_CA.ts \
+  qt/locale/dogpu_fr_FR.ts \
+  qt/locale/dogpu_fr.ts \
+  qt/locale/dogpu_gl.ts \
+  qt/locale/dogpu_he.ts \
+  qt/locale/dogpu_hi_IN.ts \
+  qt/locale/dogpu_hr.ts \
+  qt/locale/dogpu_hu.ts \
+  qt/locale/dogpu_id_ID.ts \
+  qt/locale/dogpu_it_IT.ts \
+  qt/locale/dogpu_it.ts \
+  qt/locale/dogpu_ja.ts \
+  qt/locale/dogpu_ka.ts \
+  qt/locale/dogpu_kk_KZ.ts \
+  qt/locale/dogpu_ko_KR.ts \
+  qt/locale/dogpu_ku_IQ.ts \
+  qt/locale/dogpu_ky.ts \
+  qt/locale/dogpu_la.ts \
+  qt/locale/dogpu_lt.ts \
+  qt/locale/dogpu_lv_LV.ts \
+  qt/locale/dogpu_mk_MK.ts \
+  qt/locale/dogpu_mn.ts \
+  qt/locale/dogpu_ms_MY.ts \
+  qt/locale/dogpu_nb.ts \
+  qt/locale/dogpu_ne.ts \
+  qt/locale/dogpu_nl.ts \
+  qt/locale/dogpu_pl.ts \
+  qt/locale/dogpu_pt_BR.ts \
+  qt/locale/dogpu_pt_PT.ts \
+  qt/locale/dogpu_ro_RO.ts \
+  qt/locale/dogpu_ro.ts \
+  qt/locale/dogpu_ru_RU.ts \
+  qt/locale/dogpu_ru.ts \
+  qt/locale/dogpu_sk.ts \
+  qt/locale/dogpu_sl_SI.ts \
+  qt/locale/dogpu_sq.ts \
+  qt/locale/dogpu_sr@latin.ts \
+  qt/locale/dogpu_sr.ts \
+  qt/locale/dogpu_sv.ts \
+  qt/locale/dogpu_ta.ts \
+  qt/locale/dogpu_th_TH.ts \
+  qt/locale/dogpu_tr_TR.ts \
+  qt/locale/dogpu_tr.ts \
+  qt/locale/dogpu_uk.ts \
+  qt/locale/dogpu_ur_PK.ts \
+  qt/locale/dogpu_uz@Cyrl.ts \
+  qt/locale/dogpu_vi.ts \
+  qt/locale/dogpu_vi_VN.ts \
+  qt/locale/dogpu_zh_CN.ts \
+  qt/locale/dogpu_zh_HK.ts \
+  qt/locale/dogpu_zh.ts \
+  qt/locale/dogpu_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -132,10 +133,10 @@ QT_MOC_CPP = \
   qt/moc_assetcontroltreewidget.cpp \
   qt/moc_assetfilterproxy.cpp \
   qt/moc_bantablemodel.cpp \
-  qt/moc_ravenaddressvalidator.cpp \
-  qt/moc_ravenamountfield.cpp \
-  qt/moc_ravengui.cpp \
-  qt/moc_ravenunits.cpp \
+  qt/moc_dogpuaddressvalidator.cpp \
+  qt/moc_dogpuamountfield.cpp \
+  qt/moc_dogpugui.cpp \
+  qt/moc_dogpuunits.cpp \
   qt/moc_callback.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_coincontroldialog.cpp \
@@ -186,28 +187,28 @@ QT_MOC_CPP = \
   qt/moc_sendassetsentry.cpp \
   qt/moc_mnemonicdialog.cpp
 
-RAVEN_MM = \
+DOGPU_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/raven.moc \
-  qt/ravenamountfield.moc \
+  qt/dogpu.moc \
+  qt/dogpuamountfield.moc \
   qt/callback.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_raven.cpp
-QT_QRC = qt/raven.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_raven_locale.cpp
-QT_QRC_LOCALE = qt/raven_locale.qrc
+QT_QRC_CPP = qt/qrc_dogpu.cpp
+QT_QRC = qt/dogpu.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_dogpu_locale.cpp
+QT_QRC_LOCALE = qt/dogpu_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
 PROTOBUF_PROTO = qt/paymentrequest.proto
 
-RAVEN_QT_H = \
+DOGPU_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
@@ -218,10 +219,10 @@ RAVEN_QT_H = \
   qt/assetsdialog.h \
   qt/createassetdialog.h \
   qt/bantablemodel.h \
-  qt/ravenaddressvalidator.h \
-  qt/ravenamountfield.h \
-  qt/ravengui.h \
-  qt/ravenunits.h \
+  qt/dogpuaddressvalidator.h \
+  qt/dogpuamountfield.h \
+  qt/dogpugui.h \
+  qt/dogpuunits.h \
   qt/callback.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
@@ -292,10 +293,10 @@ RES_ICONS = \
   qt/res/icons/asset_manage_selected.png \
   qt/res/icons/asset_transfer.png \
   qt/res/icons/asset_transfer_selected.png \
-  qt/res/icons/ravencointext.png \
-  qt/res/icons/raven.ico \
-  qt/res/icons/raven_testnet.ico \
-  qt/res/icons/raven.png \
+  qt/res/icons/dogegputext.png \
+  qt/res/icons/dogpu.ico \
+  qt/res/icons/dogpu_testnet.ico \
+  qt/res/icons/dogpu.png \
   qt/res/icons/chevron.png \
   qt/res/icons/clock1.png \
   qt/res/icons/clock2.png \
@@ -391,12 +392,12 @@ RES_ICONS = \
   qt/res/fonts/OpenSans-SemiBoldItalic.ttf
 
 
-RAVEN_QT_BASE_CPP = \
+DOGPU_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
-  qt/ravenaddressvalidator.cpp \
-  qt/ravenamountfield.cpp \
-  qt/ravengui.cpp \
-  qt/ravenunits.cpp \
+  qt/dogpuaddressvalidator.cpp \
+  qt/dogpuamountfield.cpp \
+  qt/dogpugui.cpp \
+  qt/dogpuunits.cpp \
   qt/clientmodel.cpp \
   qt/csvmodelwriter.cpp \
   qt/darkstyle.cpp \
@@ -417,9 +418,9 @@ RAVEN_QT_BASE_CPP = \
   qt/trafficgraphwidget.cpp \
   qt/utilitydialog.cpp
 
-RAVEN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+DOGPU_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
 
-RAVEN_QT_WALLET_CPP = \
+DOGPU_QT_WALLET_CPP = \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
   qt/askpassphrasedialog.cpp \
@@ -460,31 +461,31 @@ RAVEN_QT_WALLET_CPP = \
   qt/walletview.cpp \
   qt/mnemonicdialog.cpp
 
-RAVEN_QT_CPP = $(RAVEN_QT_BASE_CPP)
+DOGPU_QT_CPP = $(DOGPU_QT_BASE_CPP)
 if TARGET_WINDOWS
-RAVEN_QT_CPP += $(RAVEN_QT_WINDOWS_CPP)
+DOGPU_QT_CPP += $(DOGPU_QT_WINDOWS_CPP)
 endif
 if ENABLE_WALLET
-RAVEN_QT_CPP += $(RAVEN_QT_WALLET_CPP)
+DOGPU_QT_CPP += $(DOGPU_QT_WALLET_CPP)
 endif
 
 RES_IMAGES = 
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-RAVEN_RC = qt/res/raven-qt-res.rc
+DOGPU_RC = qt/res/dogpu-qt-res.rc
 
-RAVEN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+DOGPU_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
 
-qt_libravenqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(RAVEN_INCLUDES) $(RAVEN_QT_INCLUDES) \
+qt_libdogpuqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(DOGPU_INCLUDES) $(DOGPU_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_libravenqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libdogpuqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_libravenqt_a_SOURCES = $(RAVEN_QT_CPP) $(RAVEN_QT_H) $(QT_FORMS_UI) \
+qt_libdogpuqt_a_SOURCES = $(DOGPU_QT_CPP) $(DOGPU_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
 
-nodist_qt_libravenqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+nodist_qt_libdogpuqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
 
 # forms/foo.h -> forms/ui_foo.h
@@ -493,71 +494,71 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libravenqt_a_OBJECTS) $(qt_raven_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libdogpuqt_a_OBJECTS) $(qt_dogpu_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# raven-qt binary #
-qt_raven_qt_CPPFLAGS = $(AM_CPPFLAGS) $(RAVEN_INCLUDES) $(RAVEN_QT_INCLUDES) \
+# dogpu-qt binary #
+qt_dogpu_qt_CPPFLAGS = $(AM_CPPFLAGS) $(DOGPU_INCLUDES) $(DOGPU_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_raven_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_dogpu_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_raven_qt_SOURCES = qt/raven.cpp
+qt_dogpu_qt_SOURCES = qt/dogpu.cpp
 if TARGET_DARWIN
-  qt_raven_qt_SOURCES += $(RAVEN_MM)
+  qt_dogpu_qt_SOURCES += $(DOGPU_MM)
 endif
 if TARGET_WINDOWS
-  qt_raven_qt_SOURCES += $(RAVEN_RC)
+  qt_dogpu_qt_SOURCES += $(DOGPU_RC)
 endif
-qt_raven_qt_LDADD = qt/libravenqt.a $(LIBRAVEN_SERVER)
+qt_dogpu_qt_LDADD = qt/libdogpuqt.a $(LIBDOGPU_SERVER)
 if ENABLE_WALLET
-qt_raven_qt_LDADD += $(LIBRAVEN_WALLET)
+qt_dogpu_qt_LDADD += $(LIBDOGPU_WALLET)
 endif
 if ENABLE_ZMQ
-qt_raven_qt_LDADD += $(LIBRAVEN_ZMQ) $(ZMQ_LIBS)
+qt_dogpu_qt_LDADD += $(LIBDOGPU_ZMQ) $(ZMQ_LIBS)
 endif
-qt_raven_qt_LDADD += $(LIBRAVEN_CLI) $(LIBRAVEN_COMMON) $(LIBRAVEN_UTIL) $(LIBRAVEN_CONSENSUS) $(LIBRAVEN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+qt_dogpu_qt_LDADD += $(LIBDOGPU_CLI) $(LIBDOGPU_COMMON) $(LIBDOGPU_UTIL) $(LIBDOGPU_CONSENSUS) $(LIBDOGPU_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_raven_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_raven_qt_LIBTOOLFLAGS = --tag CXX
+qt_dogpu_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_dogpu_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-$(srcdir)/qt/ravenstrings.cpp: $(libraven_server_a_SOURCES) $(libraven_wallet_a_SOURCES) $(libraven_common_a_SOURCES) $(libraven_zmq_a_SOURCES) $(libraven_consensus_a_SOURCES) $(libraven_util_a_SOURCES)
+$(srcdir)/qt/dogpustrings.cpp: $(libdogpu_server_a_SOURCES) $(libdogpu_wallet_a_SOURCES) $(libdogpu_common_a_SOURCES) $(libdogpu_zmq_a_SOURCES) $(libdogpu_consensus_a_SOURCES) $(libdogpu_util_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" COPYRIGHT_HOLDERS_SUBSTITUTION="$(COPYRIGHT_HOLDERS_SUBSTITUTION)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: $(srcdir)/qt/ravenstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(RAVEN_QT_BASE_CPP) qt/raven.cpp $(RAVEN_QT_WINDOWS_CPP) $(RAVEN_QT_WALLET_CPP) $(RAVEN_QT_H) $(RAVEN_MM)
+translate: $(srcdir)/qt/dogpustrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(DOGPU_QT_BASE_CPP) qt/dogpu.cpp $(DOGPU_QT_WINDOWS_CPP) $(DOGPU_QT_WALLET_CPP) $(DOGPU_QT_H) $(DOGPU_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/raven_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/dogpu_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@cp -f $< $(@D)/temp_$(<F)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name raven_locale $(@D)/temp_$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dogpu_locale $(@D)/temp_$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name raven $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dogpu $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libravenqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
+CLEAN_QT = $(nodist_qt_libdogpuqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
 
 CLEANFILES += $(CLEAN_QT)
 
-raven_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libravenqt_a_OBJECTS) $(qt_raven_qt_OBJECTS) qt/raven-qt$(EXEEXT) $(LIBRAVENQT)
+dogpu_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libdogpuqt_a_OBJECTS) $(qt_dogpu_qt_OBJECTS) qt/dogpu-qt$(EXEEXT) $(LIBDOGPUQT)
 
-raven_qt : qt/raven-qt$(EXEEXT)
+dogpu_qt : qt/dogpu-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

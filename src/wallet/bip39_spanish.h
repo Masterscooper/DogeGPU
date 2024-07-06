@@ -774,7 +774,7 @@ const char * const wordlist_es[] = {
 "frase",
 "fraude",
 "freír",
-"freno",
+"dogpuo",
 "fresa",
 "frío",
 "frito",

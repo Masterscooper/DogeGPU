@@ -1,0 +1,33 @@
+# /etc/conf.d/dogpud: config file for /etc/init.d/dogpud
+
+# Config file location
+#DOGPUD_CONFIGFILE="/etc/dogpu/dogpu.conf"
+
+# What directory to write pidfile to?  (created and owned by $DOGPUD_USER)
+#DOGPUD_PIDDIR="/var/run/dogpud"
+
+# What filename to give the pidfile
+#DOGPUD_PIDFILE="${DOGPUD_PIDDIR}/dogpud.pid"
+
+# Where to write dogpud data (be mindful that the blockchain is large)
+#DOGPUD_DATADIR="/var/lib/dogpud"
+
+# User and group to own dogpud process
+#DOGPUD_USER="dogpu"
+#DOGPUD_GROUP="dogpu"
+
+# Path to dogpud executable
+#DOGPUD_BIN="/usr/bin/dogpud"
+
+# Nice value to run dogpud under
+#DOGPUD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#DOGPUD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for dogpud to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+DOGPUD_SIGTERM_TIMEOUT=60
