@@ -127,10 +127,7 @@ public:
         consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.kawpowLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 kawpow blocks
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
-        // consensus.nPowTargetSpacing = 1 * 60; // Network D
-        // consensus.nPowTargetSpacing = 1 * 30; // Network O
-        // consensus.nPowTargetSpacing = 1 * 15; // Network G
-        // consensus.nPowTargetSpacing = 1 * 10; // Network E
+        consensus.nPowTargetSpacing = 1 * 15; // 15 second block time
 		consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1613; // Approx 80% of 2016
@@ -168,10 +165,10 @@ public:
 
 
         // The best chain should have at least this much work
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000"); // Block 0
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000be42839b03a9"); // Block 456721
 
         // By default assume that the signatures in ancestors of this block are valid. 
-        consensus.defaultAssumeValid = uint256S("0x00000052129a4a8d7f095769951e24a0b6f82a68670324985d7733ec4686d3b4"); // Block 0
+        consensus.defaultAssumeValid = uint256S("0x00000002785582049d6957b87cb466bb7609ecb07aa4353698f1c9764823dc2b"); // Block 456721
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -179,27 +176,11 @@ public:
          * a large 32-bit integer with any alignment.
          */
         
-        // Network D
-        // pchMessageStart[0] = 0x44; // D
-        // pchMessageStart[1] = 0x44; // D
-        // pchMessageStart[2] = 0x44; // D
-        // pchMessageStart[3] = 0x44; // D
-        // // Network O
-        // pchMessageStart[0] = 0x4f; // O
-        // pchMessageStart[1] = 0x4f; // O
-        // pchMessageStart[2] = 0x4f; // O
-        // pchMessageStart[3] = 0x4f; // O
-        // // Network G
-        // pchMessageStart[0] = 0x47; // G
-        // pchMessageStart[1] = 0x47; // G
-        // pchMessageStart[2] = 0x47; // G
-        // pchMessageStart[3] = 0x47; // G
-        // // Network E
-        // pchMessageStart[0] = 0x45; // E
-        // pchMessageStart[1] = 0x45; // E
-        // pchMessageStart[2] = 0x45; // E
-        // pchMessageStart[3] = 0x45; // E
-        
+        pchMessageStart[0] = 0x47; // G
+        pchMessageStart[1] = 0x47; // G
+        pchMessageStart[2] = 0x47; // G
+        pchMessageStart[3] = 0x47; // G
+
         nDefaultPort = 6069;
         nPruneAfterHeight = 100000;
 
@@ -212,9 +193,9 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x00000052129a4a8d7f095769951e24a0b6f82a68670324985d7733ec4686d3b4"));
         assert(genesis.hashMerkleRoot == uint256S("5031b7cc96f873ea98379bcbc9ad3943d549287f358af13014459c4692e33dc5"));
 
-        vSeeds.emplace_back("seed.dogegpu.ai", false);
-        vSeeds.emplace_back("dogpu.seeder.com", false);
-        vSeeds.emplace_back("dogpuseed.dogduck.com ", false);
+        vSeeds.emplace_back("dns.dogegpu.com", false);
+        vSeeds.emplace_back("dnss.dogegpu.org", false);
+        vSeeds.emplace_back("dogpu.dogduck.com ", false);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,38); // G
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,98); // g
@@ -222,7 +203,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        // Dogpu BIP44 cointype in mainnet is '60686'
+        // Dogpu BIP44 cointype 
         nExtCoinType = 175;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
@@ -235,6 +216,10 @@ public:
         checkpointData = (CCheckpointData) {
             {
                 { 0, uint256S("0x00000052129a4a8d7f095769951e24a0b6f82a68670324985d7733ec4686d3b4")},
+                { 169420, uint256S("0x0000001eecb7ae11e3c5d38d28da872acb60e5be9403d2dd7657a1b08e181eb1")},
+                { 212420, uint256S("0x00000003a95185baa30a1f15e737bf7df0325948d633924b1622afaac63b70f3")},
+                { 325648, uint256S("0x000000020d65a973478d3361118d77326a2ba11695ddc00271312533da8041f2")},
+                { 456721, uint256S("0x00000002785582049d6957b87cb466bb7609ecb07aa4353698f1c9764823dc2b")}
             }
         };
 
@@ -242,10 +227,10 @@ public:
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Dogpu chain
             // Stats as of 
-            1711951200, // * UNIX timestamp of last known number of transactions
-            0,    // * total number of transactions between genesis and that timestamp
+            1728162503, // * UNIX timestamp of last known number of transactions
+            456769,    // * total number of transactions between genesis and that timestamp
                         //   getchaintxstats(the tx=... number in the SetBestChain debug.log lines)
-            0.000       // * estimated number of transactions per second after that timestamp
+            0.066       // * estimated number of transactions per second after that timestamp
         };
 
         /** DOGPUS Start **/
