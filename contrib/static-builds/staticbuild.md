@@ -3,7 +3,7 @@ From an ubuntu 18 bionic server(required)
 ```
 cd ~/
 export PATH_orig=$PATH
-DISTNAME=dogpu-2.0.1
+DISTNAME=dogpu-7.1.2
 sudo apt install -y curl g++-aarch64-linux-gnu g++-7-aarch64-linux-gnu gcc-7-aarch64-linux-gnu binutils-aarch64-linux-gnu g++-arm-linux-gnueabihf g++-7-arm-linux-gnueabihf gcc-7-arm-linux-gnueabihf binutils-arm-linux-gnueabihf g++-7-multilib gcc-7-multilib binutils-gold git pkg-config autoconf libtool automake bsdmainutils ca-certificates python
 git clone https://github.com/Masterscooper/Dogegpu
 mkdir -p release

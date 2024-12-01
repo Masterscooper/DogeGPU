@@ -165,10 +165,10 @@ public:
 
 
         // The best chain should have at least this much work
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000be42839b03a9"); // Block 456721
+        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000034004caf9617a"); // Block 782342
 
         // By default assume that the signatures in ancestors of this block are valid. 
-        consensus.defaultAssumeValid = uint256S("0x00000002785582049d6957b87cb466bb7609ecb07aa4353698f1c9764823dc2b"); // Block 456721
+        consensus.defaultAssumeValid = uint256S("0x000000014ef254ef0498ada77b90e8236ac72021cb88c32f331bdcba03d5df77"); // Block 782342
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -219,7 +219,8 @@ public:
                 { 169420, uint256S("0x0000001eecb7ae11e3c5d38d28da872acb60e5be9403d2dd7657a1b08e181eb1")},
                 { 212420, uint256S("0x00000003a95185baa30a1f15e737bf7df0325948d633924b1622afaac63b70f3")},
                 { 325648, uint256S("0x000000020d65a973478d3361118d77326a2ba11695ddc00271312533da8041f2")},
-                { 456721, uint256S("0x00000002785582049d6957b87cb466bb7609ecb07aa4353698f1c9764823dc2b")}
+                { 456721, uint256S("0x00000002785582049d6957b87cb466bb7609ecb07aa4353698f1c9764823dc2b")},
+                { 782342, uint256S("0x000000014ef254ef0498ada77b90e8236ac72021cb88c32f331bdcba03d5df77")}
             }
         };
 
@@ -227,8 +228,8 @@ public:
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Dogpu chain
             // Stats as of 
-            1728162503, // * UNIX timestamp of last known number of transactions
-            456769,    // * total number of transactions between genesis and that timestamp
+            1733091438, // * UNIX timestamp of last known number of transactions
+            782586,    // * total number of transactions between genesis and that timestamp
                         //   getchaintxstats(the tx=... number in the SetBestChain debug.log lines)
             0.066       // * estimated number of transactions per second after that timestamp
         };
@@ -250,8 +251,8 @@ public:
         strReissueAssetBurnAddress = "GXReissueAssetXXXXXXXXXXXXXXUDgdkK";
         strIssueSubAssetBurnAddress = "GXissueSubAssetXXXXXXXXXXXXXa34vJz";
         strIssueUniqueAssetBurnAddress = "GXissueUniqueAssetXXXXXXXXXXU8Wezq";
-        strIssueMsgChannelAssetBurnAddress = "RXissueMsgChanneLAssetXXXXXXSjHvAY";
-        strIssueQualifierAssetBurnAddress = "GXissueMsgChanneLAssetXXXXXXXXxtR5";
+        strIssueMsgChannelAssetBurnAddress = "GXissueMsgChanneLAssetXXXXXXXXxtR5";
+        strIssueQualifierAssetBurnAddress = "GXissueQuaLifierXXXXXXXXXXXXU4k5t4";
         strIssueSubQualifierAssetBurnAddress = "GXissueSubQuaLifierXXXXXXXXXZ6ha2f";
         strIssueRestrictedAssetBurnAddress = "GXissueRestrictedXXXXXXXXXXXY1gTsx";
         strAddNullQualifierTagBurnAddress = "GXaddTagBurnXXXXXXXXXXXXXXXXV6kAW2";

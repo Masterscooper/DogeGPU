@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Set DISTNAME, BRANCH and MAKEOPTS to the desired settings
-DISTNAME=dogpu-2.0.3
-MAKEOPTS="-j4"
+DISTNAME=dogpu-7.1.2
+MAKEOPTS="-j8"
 BRANCH=master
 clear
 if [[ $EUID -ne 0 ]]; then
